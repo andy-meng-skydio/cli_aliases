@@ -1,7 +1,22 @@
 echo_and_run()
 {
-  echo $@;
-  $@;
+  argList=""
+  #iterate on each argument
+  for arg in "$@"
+  do
+    #if an argument contains a white space, enclose it in double quotes and append to the list
+    #otherwise simply append the argument to the list
+    if echo $arg | grep -q " "; then
+    argList="$argList \"$arg\""
+    else
+    argList="$argList $arg"
+    fi
+  done
+
+  #remove a possible trailing space at the beginning of the list
+  argList=$(echo $argList | sed 's/^ *//')
+  echo $argList;
+  "$@";
 }
 
 # Add
@@ -39,4 +54,31 @@ alias grs='echo_and_run git reset'
 alias grsh='echo_and_run git reset --hard'
 alias grshom='echo_and_run git reset --hard origin/master'
 
-alias asd='echo found alias'
+# Rebase
+alias gr='echo_and_run git rebase'
+alias gri='echo_and_run git rebase -i'
+alias grm='echo_and_run git rebase master'
+alias grc='echo_and_run git rebase --continue'
+alias gra='echo_and_run git rebase --abort'
+grib()
+{
+  echo_and_run git rebase -i HEAD~$1
+}
+
+# Stash
+alias gst='echo_and_run git stash'
+alias gstu='echo_and_run git stash -u'
+alias gstpo='echo_and_run git stash pop'
+alias gstps='echo_and_run git stash push'
+alias gstl='echo_and_run git stash list'
+
+# Status
+alias gs='echo_and_run git status'
+
+# Submodules
+alias gsu='echo_and_run git submodule update'
+alias gsui='echo_and_run git submodule update --init'
+alias gsuir='echo_and_run git submodule update --init --recursive'
+alias gsrh='echo_and_run git submodule foreach git reset --hard --recurse-submodules'
+alias gscf='echo_and_run git submodule foreach --recursive git clean -fdx'
+alias gscff='echo_and_run git submodule foreach --recursive git clean -ffdx'
