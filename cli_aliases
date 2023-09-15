@@ -82,3 +82,13 @@ alias gsuir='echo_and_run git submodule update --init --recursive'
 alias gsrh='echo_and_run git submodule foreach git reset --hard --recurse-submodules'
 alias gscf='echo_and_run git submodule foreach --recursive git clean -fdx'
 alias gscff='echo_and_run git submodule foreach --recursive git clean -ffdx'
+
+# Bazel
+alias bab='echo_and_run bazel build'
+alias bar='echo_and_run bazel run'
+alias bat='echo_and_run bazel test'
+alias baq='echo_and_run bazel query'
+
+# Aircam specific
+alias format='echo_and_run ./skyrun bin code_format'
+alias format_master='echo_and_run ./skyrun bin code_format --branch=origin/master'
