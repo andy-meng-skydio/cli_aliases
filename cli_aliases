@@ -1,94 +1,78 @@
-echo_and_run()
-{
-  argList=""
-  #iterate on each argument
-  for arg in "$@"
-  do
-    #if an argument contains a white space, enclose it in double quotes and append to the list
-    #otherwise simply append the argument to the list
-    if echo $arg | grep -q " "; then
-    argList="$argList \"$arg\""
-    else
-    argList="$argList $arg"
-    fi
-  done
-
-  #remove a possible trailing space at the beginning of the list
-  argList=$(echo $argList | sed 's/^ *//')
-  echo $argList;
-  "$@";
-}
-
 # Add
-alias ga='echo_and_run git add'
-alias gaa='echo_and_run git add -A'
-alias gau='echo_and_run git add -u'
+alias ga='git add'
+alias gaa='git add -A'
+alias gau='git add -u'
+
+# Branch
+alias gb='git branch'
+alias gbd='git branch -d'
+alias gbdf='git branch -D'
 
 # Checkout
-alias gco='echo_and_run git checkout'
-alias gcob='echo_and_run git checkout -b'
-alias gcom='echo_and_run git checkout master'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
 
 # Cherry Pick
-alias gcp='echo_and_run git cherry-pick'
-alias gcpa='echo_and_run git cherry-pick --abort'
-alias gcpc='echo_and_run git cherry-pick --continue'
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
 
 # Commit
-alias gc='echo_and_run git commit'
-alias gcm='echo_and_run git commit -m'
-alias gca='echo_and_run git commit --amend'
-alias gcan='echo_and_run git commit --amend --no-edit'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
 
 # Pull
-alias gpl='echo_and_run git pull'
-alias gplo='echo_and_run git pull origin'
-alias gplom='echo_and_run git pull origin master'
+alias gpl='git pull'
+alias gplo='git pull origin'
+alias gplom='git pull origin master'
 
 # Push
-alias gps='echo_and_run git push'
-alias gpsof='echo_and_run git push origin -f'
+alias gps='git push'
+alias gpsof='git push origin -f'
 
 # Reset
-alias grs='echo_and_run git reset'
-alias grsh='echo_and_run git reset --hard'
-alias grshom='echo_and_run git reset --hard origin/master'
+alias grs='git reset'
+alias grsh='git reset --hard'
+alias grshom='git reset --hard origin/master'
 
 # Rebase
-alias gr='echo_and_run git rebase'
-alias gri='echo_and_run git rebase -i'
-alias grm='echo_and_run git rebase master'
-alias grc='echo_and_run git rebase --continue'
-alias gra='echo_and_run git rebase --abort'
+alias gr='git rebase'
+alias gri='git rebase -i'
+alias grm='git rebase master'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
 grib()
 {
-  echo_and_run git rebase -i HEAD~$1
+  git rebase -i HEAD~$1
 }
 
 # Stash
-alias gst='echo_and_run git stash'
-alias gstu='echo_and_run git stash -u'
-alias gstpo='echo_and_run git stash pop'
-alias gstps='echo_and_run git stash push'
-alias gstl='echo_and_run git stash list'
+alias gst='git stash'
+alias gstu='git stash -u'
+alias gstpo='git stash pop'
+alias gstps='git stash push'
+alias gstl='git stash list'
 
 # Status
-alias gs='echo_and_run git status'
+alias gs='git status'
 
 # Submodules
-alias gsu='echo_and_run git submodule update'
-alias gsui='echo_and_run git submodule update --init'
-alias gsuir='echo_and_run git submodule update --init --recursive'
-alias gsrh='echo_and_run git submodule foreach git reset --hard --recurse-submodules'
-alias gscf='echo_and_run git submodule foreach --recursive git clean -fdx'
-alias gscff='echo_and_run git submodule foreach --recursive git clean -ffdx'
+alias gsu='git submodule update'
+alias gsui='git submodule update --init'
+alias gsuir='git submodule update --init --recursive'
+alias gsrh='git submodule foreach git reset --hard --recurse-submodules'
+alias gscf='git submodule foreach --recursive git clean -fdx'
+alias gscff='git submodule foreach --recursive git clean -ffdx'
 
 # Bazel
-alias bab='echo_and_run bazel build'
-alias bar='echo_and_run bazel run'
-alias bat='echo_and_run bazel test'
-alias baq='echo_and_run bazel query'
+alias bab='bazel build'
+alias bar='bazel run'
+alias bat='bazel test'
+alias baq='bazel query'
 
 # Aircam specific
-alias format='echo_and_run ./skyrun bin code_format'
-alias format_master='echo_and_run ./skyrun bin code_format --branch=origin/master'
+alias format='./skyrun bin code_format'
+alias format_master='./skyrun bin code_format --branch=origin/master'
