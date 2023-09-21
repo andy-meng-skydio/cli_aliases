@@ -55,6 +55,7 @@ alias gstu='git stash -u'
 alias gstpo='git stash pop'
 alias gstps='git stash push'
 alias gstl='git stash list'
+alias gsta='git stash apply'
 
 # Status
 alias gs='git status'
@@ -76,3 +77,10 @@ alias baq='bazel query'
 # Aircam specific
 alias format='./skyrun bin code_format'
 alias format_master='./skyrun bin code_format --branch=origin/master'
+alias gzl='bazel run //tools/gazelle'
+alias auth='bazel run -S //auth/aws'
+alias lint='./skyrun bin lint_modified --fast'
+alias key='/$CLI_ALIAS_FOLDER/yub_script'
+
+alias prep='format_master;gzl;lint'
+alias s='key;auth'

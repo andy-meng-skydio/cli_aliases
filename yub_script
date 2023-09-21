@@ -1,0 +1,12 @@
+#!/bin/bash
+pass=$(op item get $HOSTNAME --fields label="yubikey pin_puk")
+
+ssh-add -D
+ssh-add -e /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+
+expect << EOF
+  spawn ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+  expect "Enter passphrase"
+  send "$pass\r"
+  expect eof
+EOF
