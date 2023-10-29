@@ -87,3 +87,6 @@ alias key='/$CLI_ALIAS_FOLDER/yub_script'
 
 alias prep='format_master;gzl;lint'
 alias s='key;auth'
+
+
+alias pwr=$'awk \'{print $1*10^-6 " W"}\' /sys/class/power_supply/BAT0/power_now'
