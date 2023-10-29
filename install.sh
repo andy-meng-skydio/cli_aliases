@@ -3,6 +3,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 sudo apt install bash-completion expect
 git submodule update --init
 cp complete-alias/complete_alias ~/.complete_alias
+echo ". ~/.complete_alias" >> ~/.bash_completion
 chmod +x $SCRIPT_DIR/yub_script
 
 if [ -f ~/.bashrc ]; then
@@ -19,3 +20,4 @@ if [ -f ~/.bashrc ]; then
 else
   echo ".bashrc not found"
 fi
+source ~/.bashrc
