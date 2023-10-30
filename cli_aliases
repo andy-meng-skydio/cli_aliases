@@ -8,6 +8,9 @@ alias gb='git branch'
 alias gbd='git branch -d'
 alias gbdf='git branch -D'
 
+# Clone
+alias gcl='git clone'
+
 # Checkout
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -84,3 +87,6 @@ alias key='/$CLI_ALIAS_FOLDER/yub_script'
 
 alias prep='format_master;gzl;lint'
 alias s='key;auth'
+
+
+alias pwr=$'awk \'{print $1*10^-6 " W"}\' /sys/class/power_supply/BAT0/power_now'
